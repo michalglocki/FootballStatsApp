@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FootballApplication</string>
+    <string name="url_main_activity">http://gifimage.net/wp-content/uploads/2017/09/ball-gif-9.gif</string>
+    <string name="select_league">Please seletct a league</string>
+    <string name="bundesliga">Bundesliga</string>
+    <string name="premiere_league">Premiere League</string>
+    <string name="ekstraklasa">Ekstraklasa</string>
+    <string name="favourites">favourites</string>
+    <string name="teams_count">teams count</string>
+    <string name="league_name">league name:</string>
+    <string name="match_days">number of match days:</string>
+</resources>
