@@ -8,13 +8,13 @@ import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
 import com.example.koncia.footballapplication.R;
-import com.example.koncia.footballapplication.intefaces.MainActivityContract;
+import com.example.koncia.footballapplication.intefaces.MainContract;
 import com.example.koncia.footballapplication.presenters.MainPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
+public class MainActivity extends AppCompatActivity implements MainContract.View {
 
     @BindView(R.id.main_image_view)
     ImageView imageView;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @BindView(R.id.main_progress_bar)
     ProgressBar progressBar;
 
-    MainActivityContract.Presenter presenter;
+    MainContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
