@@ -48,14 +48,6 @@ public class MenuActivity extends AppCompatActivity implements MenuContract.View
                 .plus(new MenuModule(this))
                 .inject(this);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(LeaguesApi.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(new Gson()))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-
-        //presenter = new MenuPresenter(this, retrofit.create(LeaguesApi.class));
-
         menuAdapter = new MenuAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(menuAdapter);

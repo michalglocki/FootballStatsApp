@@ -7,6 +7,8 @@ import com.example.koncia.footballapplication.models.League;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -14,7 +16,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MenuPresenter implements MenuContract.Presenter {
 
-    private LeaguesApi api;
+    @Inject
+    LeaguesApi api;
     private MenuContract.View view;
 
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
