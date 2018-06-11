@@ -7,15 +7,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.koncia.footballapplication.FootballApp;
 import com.example.koncia.footballapplication.R;
 import com.example.koncia.footballapplication.adapters.MenuAdapter;
 import com.example.koncia.footballapplication.api.LeaguesApi;
+import com.example.koncia.footballapplication.dagger.MenuModule;
 import com.example.koncia.footballapplication.intefaces.MenuContract;
 import com.example.koncia.footballapplication.models.League;
 import com.example.koncia.footballapplication.presenters.MenuPresenter;
 import com.google.gson.Gson;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +33,9 @@ public class MenuActivity extends AppCompatActivity implements MenuContract.View
     RecyclerView recyclerView;
 
     private MenuAdapter menuAdapter;
-    private MenuContract.Presenter presenter;
+
+    @Inject
+    MenuContract.Presenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,13 +43,18 @@ public class MenuActivity extends AppCompatActivity implements MenuContract.View
         setContentView(R.layout.activity_menu);
         ButterKnife.bind(this);
 
+        ((FootballApp) getApplication())
+                .getAppComponent()
+                .plus(new MenuModule(this))
+                .inject(this);
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(LeaguesApi.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
-        presenter = new MenuPresenter(this, retrofit.create(LeaguesApi.class));
+        //presenter = new MenuPresenter(this, retrofit.create(LeaguesApi.class));
 
         menuAdapter = new MenuAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
