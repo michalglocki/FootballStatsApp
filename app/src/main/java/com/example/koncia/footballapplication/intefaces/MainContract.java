@@ -19,5 +19,7 @@ public interface MainContract {
 
         void updateProgresValue(int progresMaximum) throws InterruptedException;
 
+        void getLeagues();
+
     }
 }

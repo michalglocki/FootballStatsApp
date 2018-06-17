@@ -17,13 +17,16 @@ import com.example.koncia.footballapplication.models.League;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 
-    private List<League> leaguesList = new ArrayList<>();
+    @Inject List<League> leaguesList;
+
     public static final String TEAM_ID = "teamID";
 
 
@@ -44,8 +47,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     }
 
     public void updateLeagues(List<League> leagues) {
-        leaguesList.clear();
-        leaguesList.addAll(leagues);
+        leaguesList = leagues;
+        //leaguesList.addAll(leagues);
         notifyDataSetChanged();
         Log.d("Count", String.valueOf(leaguesList.size()));
     }

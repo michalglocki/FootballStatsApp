@@ -1,8 +1,11 @@
 package com.example.koncia.footballapplication.dagger;
 
-import com.example.koncia.footballapplication.api.LeaguesApi;
+import com.example.koncia.footballapplication.api.Api;
 import com.example.koncia.footballapplication.intefaces.MenuContract;
+import com.example.koncia.footballapplication.models.League;
 import com.example.koncia.footballapplication.presenters.MenuPresenter;
+
+import java.util.List;
 
 import javax.inject.Singleton;
 
@@ -19,7 +22,8 @@ public class MenuModule {
 
     @Provides
     @Singleton
-    MenuContract.Presenter provideMenuPresenter(LeaguesApi api){
-        return new MenuPresenter(view, api);
+    MenuContract.Presenter provideMenuPresenter(Api api, List<League> leagues){
+        return new MenuPresenter(view, api, leagues);
     }
+
 }

@@ -4,14 +4,31 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.koncia.footballapplication.R;
+import com.example.koncia.footballapplication.api.Api;
 import com.example.koncia.footballapplication.intefaces.MainContract;
+import com.example.koncia.footballapplication.models.League;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainPresenter implements MainContract.Presenter {
 
-    MainContract.View view;
+    private MainContract.View view;
+    private List<League> leagues;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    public MainPresenter(MainContract.View view) {
+    @Inject
+    Api api;
+
+    public MainPresenter(MainContract.View view, Api api, List<League> leagues) {
         this.view = view;
+        this.leagues = leagues;
+        this.api = api;
     }
 
     @Override
@@ -23,6 +40,16 @@ public class MainPresenter implements MainContract.Presenter {
     public void updateProgresValue(int progresMax) throws InterruptedException {
         //todo it require cover with RxJava od AsyncTask to do the counting on the other thread
         new CountingOperation().execute(String.valueOf(progresMax));
+    }
+
+    @Override
+    public void getLeagues() {
+        compositeDisposable.add(
+                api.getLeagues()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe()
+        );
     }
 
 
@@ -52,6 +79,9 @@ public class MainPresenter implements MainContract.Presenter {
 
         @Override
         protected void onProgressUpdate(Void... values) {}
+
+
+
     }
 }
 

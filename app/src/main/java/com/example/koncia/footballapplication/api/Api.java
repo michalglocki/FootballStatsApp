@@ -9,7 +9,7 @@ import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface LeaguesApi {
+public interface Api {
     String BASE_URL = "http://api.football-data.org/v1/";
 
     @GET("soccerseasons")

@@ -12,6 +12,6 @@ public interface MenuContract {
     }
 
     interface Presenter{
-        void getLeagues();
+        void setLeaguesToView();
     }
 }

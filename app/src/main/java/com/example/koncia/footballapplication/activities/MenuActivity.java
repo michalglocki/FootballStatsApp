@@ -10,12 +10,9 @@ import android.util.Log;
 import com.example.koncia.footballapplication.FootballApp;
 import com.example.koncia.footballapplication.R;
 import com.example.koncia.footballapplication.adapters.MenuAdapter;
-import com.example.koncia.footballapplication.api.LeaguesApi;
 import com.example.koncia.footballapplication.dagger.MenuModule;
 import com.example.koncia.footballapplication.intefaces.MenuContract;
 import com.example.koncia.footballapplication.models.League;
-import com.example.koncia.footballapplication.presenters.MenuPresenter;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -23,9 +20,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MenuActivity extends AppCompatActivity implements MenuContract.View{
 
@@ -51,7 +45,7 @@ public class MenuActivity extends AppCompatActivity implements MenuContract.View
         menuAdapter = new MenuAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(menuAdapter);
-        presenter.getLeagues();
+        presenter.setLeaguesToView();
         Log.d("Count", String.valueOf(menuAdapter.getItemCount()));
     }
 
