@@ -52,6 +52,11 @@ public class MainPresenter implements MainContract.Presenter {
         );
     }
 
+    @Override
+    public void dispose() {
+        compositeDisposable.dispose();
+    }
+
 
     private class CountingOperation extends AsyncTask<String, Void, String> {
 
@@ -71,7 +76,11 @@ public class MainPresenter implements MainContract.Presenter {
 
         @Override
         protected void onPostExecute(String result) {
-            view.goToTheMenuActivity();
+            do {
+                if (leagues.size() > 0) {
+                    view.goToTheMenuActivity();
+                }
+            }while (leagues.size() == 0);
         }
 
         @Override

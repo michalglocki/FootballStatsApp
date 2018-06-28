@@ -21,5 +21,7 @@ public interface MainContract {
 
         void getLeagues();
 
+        void dispose();
+
     }
 }

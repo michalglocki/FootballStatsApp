@@ -1,9 +1,17 @@
 package com.example.koncia.footballapplication.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class ResponseFromServer {
 
     private int count;
-    private Team[] teams;
+
+    @SerializedName("teams")
+    @Expose
+    private Team[] teamsList;
 
     public int getCount() {
         return count;
@@ -14,10 +22,6 @@ public class ResponseFromServer {
     }
 
     public Team[] getTeams() {
-        return teams;
-    }
-
-    public void setTeams(Team[] teams) {
-        this.teams = teams;
+        return teamsList;
     }
 }

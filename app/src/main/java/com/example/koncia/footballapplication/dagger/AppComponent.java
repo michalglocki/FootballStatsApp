@@ -9,5 +9,6 @@ import dagger.Component;
 public interface AppComponent {
     MenuComponent plus(MenuModule menuModule);
     MainComponent plus(MainModule mainModule);
+    TeamsComponent plus(TeamsModule teamsModule);
 
 }

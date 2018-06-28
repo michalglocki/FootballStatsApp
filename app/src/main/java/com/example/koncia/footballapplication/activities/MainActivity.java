@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     MainContract.Presenter presenter;
 
     @Override
+    protected void onStop() {
+        presenter.dispose();
+        super.onStop();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -44,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 .inject(this);
 
         progressBar.setMax(5);
-        //presenter = new MainPresenter(this);
 
         Glide.with(this).load(presenter.getUrlForStartingScreen(this)).into(imageView);
         presenter.getLeagues();

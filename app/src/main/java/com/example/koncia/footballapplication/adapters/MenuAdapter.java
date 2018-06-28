@@ -48,7 +48,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     public void updateLeagues(List<League> leagues) {
         leaguesList = leagues;
-        //leaguesList.addAll(leagues);
         notifyDataSetChanged();
         Log.d("Count", String.valueOf(leaguesList.size()));
     }
