@@ -11,7 +11,7 @@ public class ResponseFromServer {
 
     @SerializedName("teams")
     @Expose
-    private Team[] teamsList;
+    private List<Team> teamsList;
 
     public int getCount() {
         return count;
@@ -21,7 +21,7 @@ public class ResponseFromServer {
         this.count = count;
     }
 
-    public Team[] getTeams() {
+    public List<Team> getTeams() {
         return teamsList;
     }
 }

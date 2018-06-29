@@ -1,5 +1,6 @@
 package com.example.koncia.footballapplication.presenters;
 
+import com.example.koncia.footballapplication.adapters.TeamsAdapter;
 import com.example.koncia.footballapplication.api.Api;
 import com.example.koncia.footballapplication.intefaces.TeamsContract;
 
@@ -20,14 +21,15 @@ public class TeamsPresenter implements TeamsContract.Presenter{
     }
 
     @Override
-    public void loadSelectedTeamsToTheView(int id) {
+    public void loadSelectedTeamsToTheView(int id, TeamsAdapter adapter) {
 
         compositeDisposable.add(
                 api.getResponseFromServer(String.valueOf(id))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        responseFromServer -> view.setLeagueName(String.valueOf(responseFromServer.getCount()))
+                        //responseFromServer -> view.setLeagueName(String.valueOf(responseFromServer.getCount()))
+                        responseFromServer -> adapter.loadTeams(responseFromServer.getTeams())
                 )
         );
     }

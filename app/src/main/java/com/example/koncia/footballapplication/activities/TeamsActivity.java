@@ -16,6 +16,8 @@ import com.example.koncia.footballapplication.dagger.TeamsModule;
 import com.example.koncia.footballapplication.intefaces.TeamsContract;
 import com.example.koncia.footballapplication.models.Team;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -45,18 +47,20 @@ public class TeamsActivity extends AppCompatActivity implements TeamsContract.Vi
                 .plus(new TeamsModule(this))
                 .inject(this);
 
-//        adapter = new TeamsAdapter();
-//        teamsRecycler.setLayoutManager(new LinearLayoutManager(this));
-//
-//        teamsRecycler.setAdapter(adapter);
-
         Intent intent = getIntent();
-        presenter.loadSelectedTeamsToTheView(intent.getIntExtra(MenuAdapter.TEAM_ID,0));
+        adapter = new TeamsAdapter();
+
+        presenter.loadSelectedTeamsToTheView(intent.getIntExtra(MenuAdapter.TEAM_ID,0), adapter);
+
+        teamsRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        teamsRecycler.setAdapter(adapter);
+
 
     }
 
     @Override
-    public void setViewOfTeamsFromSelectedLeague(Team[] teams) {
+    public void setViewOfTeamsFromSelectedLeague(List<Team> teams) {
         adapter.loadTeams(teams);
     }
 
