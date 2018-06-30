@@ -53,8 +53,8 @@ public class TeamsActivity extends AppCompatActivity implements TeamsContract.Vi
         presenter.loadSelectedTeamsToTheView(intent.getIntExtra(MenuAdapter.TEAM_ID,0), adapter);
 
         teamsRecycler.setLayoutManager(new LinearLayoutManager(this));
-
         teamsRecycler.setAdapter(adapter);
+
 
 
     }

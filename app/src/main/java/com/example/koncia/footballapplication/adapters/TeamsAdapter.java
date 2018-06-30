@@ -2,6 +2,7 @@ package com.example.koncia.footballapplication.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
 
     public void loadTeams(List<Team> teams){
         this.teams = teams;
-//        notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -43,7 +44,12 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
+        Log.d("count", String.valueOf(teams.size()));
         return teams.size();
+    }
+
+    public List<Team> getTeams() {
+        return teams;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -60,7 +66,7 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
         @BindView(R.id.team_check_box)
         CheckBox favourite;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }

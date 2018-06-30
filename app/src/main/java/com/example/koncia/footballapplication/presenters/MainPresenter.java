@@ -21,6 +21,7 @@ public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
     private List<League> leagues;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private boolean progresCountingFinished = false;
 
     @Inject
     Api api;
@@ -38,7 +39,6 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void updateProgresValue(int progresMax) throws InterruptedException {
-        //todo it require cover with RxJava od AsyncTask to do the counting on the other thread
         new CountingOperation().execute(String.valueOf(progresMax));
     }
 
@@ -71,13 +71,14 @@ public class MainPresenter implements MainContract.Presenter {
                     Thread.interrupted();
                 }
             }
+            progresCountingFinished = true;
             return "Executed";
         }
 
         @Override
         protected void onPostExecute(String result) {
             do {
-                if (leagues.size() > 0) {
+                if (leagues.size() > 0 && progresCountingFinished) {
                     view.goToTheMenuActivity();
                 }
             }while (leagues.size() == 0);

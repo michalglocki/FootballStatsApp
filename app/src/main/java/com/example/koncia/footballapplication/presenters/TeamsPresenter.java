@@ -28,8 +28,7 @@ public class TeamsPresenter implements TeamsContract.Presenter{
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        //responseFromServer -> view.setLeagueName(String.valueOf(responseFromServer.getCount()))
-                        responseFromServer -> adapter.loadTeams(responseFromServer.getTeams())
+                        responseFromServer -> view.setViewOfTeamsFromSelectedLeague(responseFromServer.getTeams())
                 )
         );
     }
