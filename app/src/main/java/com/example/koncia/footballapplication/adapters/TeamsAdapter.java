@@ -54,14 +54,26 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        @BindView(R.id.item_team_logo)
-        ImageView logo;
-
         @BindView((R.id.item_team_title))
         TextView title;
 
-        @BindView(R.id.item_team_details)
-        TextView details;
+        @BindView(R.id.item_team_position)
+        TextView position;
+
+        @BindView(R.id.item_team_points)
+        TextView points;
+
+        @BindView(R.id.item_team_goals)
+        TextView goals;
+
+        @BindView(R.id.item_team_wins)
+        TextView wins;
+
+        @BindView(R.id.item_team_draws)
+        TextView draws;
+
+        @BindView(R.id.item_team_losses)
+        TextView losses;
 
         @BindView(R.id.team_check_box)
         CheckBox favourite;
@@ -72,12 +84,14 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
         }
 
         void setup(Team team){
-            Glide.with(itemView.getContext())
-                    .load(team.getLogoUrl())
-                    .into(logo);
 
             title.setText(team.getName());
-            details.setText(team.getCode());
+            position.setText(String.valueOf(team.getPosition()));
+            points.setText(String.valueOf(team.getPoints()));
+            goals.setText(String.valueOf(team.getGoals()));
+            wins.setText(String.valueOf(team.getWins()));
+            draws.setText(String.valueOf(team.getDraws()));
+            losses.setText(String.valueOf(team.getLosses()));
         }
     }
 }

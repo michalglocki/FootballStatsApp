@@ -4,14 +4,26 @@ import com.google.gson.annotations.SerializedName;
 
 public class Team {
 
+    private int position;
+
+    @SerializedName("teamName")
     private String name;
-    private String code;
 
-    @SerializedName("shortName")
-    private String shortcut;
+    private int points;
+    private int goals;
+    private int goalsAgainst;
+    private int goalDifference;
+    private int wins;
+    private int draws;
+    private int losses;
 
-    @SerializedName("crestUrl")
-    private String logoUrl;
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public String getName() {
         return name;
@@ -21,27 +33,59 @@ public class Team {
         this.name = name;
     }
 
-    public String getCode() {
-        return code;
+    public int getPoints() {
+        return points;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setPoints(int points) {
+        this.points = points;
     }
 
-    public String getShortcut() {
-        return shortcut;
+    public int getGoals() {
+        return goals;
     }
 
-    public void setShortcut(String shortcut) {
-        this.shortcut = shortcut;
+    public void setGoals(int goals) {
+        this.goals = goals;
     }
 
-    public String getLogoUrl() {
-        return logoUrl;
+    public int getGoalsAgainst() {
+        return goalsAgainst;
     }
 
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
+    public void setGoalsAgainst(int goalsAgainst) {
+        this.goalsAgainst = goalsAgainst;
+    }
+
+    public int getGoalDifference() {
+        return goalDifference;
+    }
+
+    public void setGoalDifference(int goalDifference) {
+        this.goalDifference = goalDifference;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
     }
 }

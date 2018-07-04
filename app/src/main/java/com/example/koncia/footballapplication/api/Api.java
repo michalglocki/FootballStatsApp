@@ -21,6 +21,7 @@ public interface Api {
     Single<List<League>> getLeagues();
 
     @Headers("X-Auth-Token: f3b4f6f151054f69842c2c502b6a560d")
-    @GET("competitions/{id}/teams")
+    @GET("competitions/{id}/leagueTable")
     Single<ResponseFromServer> getResponseFromServer(@Path("id") String id);
+
 }
