@@ -2,7 +2,10 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,19 +18,23 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:hint="pos"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@id/item_team_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/item_team_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:hint="title"
-            app:layout_constraintStart_toEndOf="@+id/item_team_position"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -40,8 +47,8 @@
             android:hint="points"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/item_team_wins"
-            app:layout_constraintStart_toEndOf="@+id/item_team_title"
-            app:layout_constraintTop_toTopOf="@+id/item_team_title" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_team_points_mark" />
 
         <TextView
             android:id="@+id/item_team_wins"
@@ -52,7 +59,9 @@
             android:layout_marginStart="8dp"
             android:hint="wins"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_team_draws"
             app:layout_constraintStart_toEndOf="@+id/item_team_points"
+            app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
             app:layout_constraintTop_toTopOf="@+id/item_team_points" />
 
         <TextView
@@ -64,7 +73,9 @@
             android:layout_marginStart="8dp"
             android:hint="draws"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_team_losses"
             app:layout_constraintStart_toEndOf="@+id/item_team_wins"
+            app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
             app:layout_constraintTop_toTopOf="@+id/item_team_wins" />
 
         <TextView
@@ -76,7 +87,9 @@
             android:layout_marginStart="8dp"
             android:hint="losses"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_team_goals"
             app:layout_constraintStart_toEndOf="@+id/item_team_draws"
+            app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
             app:layout_constraintTop_toTopOf="@+id/item_team_draws" />
 
         <TextView
@@ -88,7 +101,9 @@
             android:layout_marginStart="8dp"
             android:hint="goals"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_team_goalsAgainst"
             app:layout_constraintStart_toEndOf="@+id/item_team_losses"
+            app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
             app:layout_constraintTop_toTopOf="@+id/item_team_losses" />
 
         <TextView
@@ -100,15 +115,89 @@
             android:layout_marginStart="8dp"
             android:hint="goals"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_team_goals"
+            app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
             app:layout_constraintTop_toTopOf="@+id/item_team_goals" />
 
         <CheckBox
             android:id="@+id/team_check_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_team_points_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:text="points"
+            app:layout_constraintEnd_toStartOf="@id/item_team_wins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/team_check_box" />
+
+        <TextView
+            android:id="@+id/item_team_wins_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="wins"
+            app:layout_constraintEnd_toStartOf="@id/item_team_draws"
+            app:layout_constraintStart_toEndOf="@+id/item_team_points"
+            app:layout_constraintTop_toTopOf="@+id/item_team_points_mark" />
+
+        <TextView
+            android:id="@+id/item_team_draws_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="draws"
+            app:layout_constraintEnd_toStartOf="@id/item_team_losses"
+            app:layout_constraintStart_toEndOf="@+id/item_team_wins"
+            app:layout_constraintTop_toTopOf="@+id/item_team_points_mark" />
+
+        <TextView
+            android:id="@+id/item_team_losses_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="losses"
+            app:layout_constraintEnd_toStartOf="@id/item_team_goals"
+            app:layout_constraintStart_toEndOf="@+id/item_team_draws"
+            app:layout_constraintTop_toTopOf="@+id/item_team_points_mark" />
+
+        <TextView
+            android:id="@+id/item_team_goals_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="goals"
+            app:layout_constraintEnd_toStartOf="@id/item_team_goalsAgainst"
+            app:layout_constraintStart_toEndOf="@+id/item_team_losses"
+            app:layout_constraintTop_toTopOf="@+id/item_team_points_mark" />
+
+        <TextView
+            android:id="@+id/item_team_goalsAgainst_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:text="goals"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_team_goals"
+            app:layout_constraintTop_toTopOf="@+id/item_team_points_mark" />
 
     </android.support.constraint.ConstraintLayout>
 
