@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/squad_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp"
+        android:hint="nb"/>
+
+    <TextView
+        android:id="@+id/squad_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/squad_number"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp"
+        android:hint="name"/>
+
+    <TextView
+        android:id="@+id/squad_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/squad_name"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp"
+        android:hint="position"/>
+
+    <TextView
+        android:id="@+id/squad_nationality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/squad_position"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp"
+        android:hint="nationality"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.koncia.footballapplication.api;
 
 import com.example.koncia.footballapplication.models.League;
 import com.example.koncia.footballapplication.models.ResponseFromServer;
+import com.example.koncia.footballapplication.models.ResponseOfSquad;
 import com.example.koncia.footballapplication.models.Team;
 
 import java.util.List;
@@ -23,5 +24,9 @@ public interface Api {
     @Headers("X-Auth-Token: f3b4f6f151054f69842c2c502b6a560d")
     @GET("competitions/{id}/leagueTable")
     Single<ResponseFromServer> getResponseFromServer(@Path("id") String id);
+
+    @Headers("X-Auth-Token: f3b4f6f151054f69842c2c502b6a560d")
+    @GET("teams/{id}/players")
+    Single<ResponseOfSquad> getResponseOfSquad(@Path("id") String id);
 
 }

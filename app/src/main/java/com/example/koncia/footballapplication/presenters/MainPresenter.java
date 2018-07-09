@@ -78,7 +78,7 @@ public class MainPresenter implements MainContract.Presenter {
         @Override
         protected void onPostExecute(String result) {
             do {
-                if (leagues.size() > 0 && progresCountingFinished) {
+                if (progresCountingFinished) {
                     view.goToTheMenuActivity();
                 }
             }while (leagues.size() == 0);

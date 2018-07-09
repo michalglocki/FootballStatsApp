@@ -58,7 +58,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:hint="wins"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/item_team_draws"
             app:layout_constraintStart_toEndOf="@+id/item_team_points"
             app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
@@ -72,7 +71,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:hint="draws"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/item_team_losses"
             app:layout_constraintStart_toEndOf="@+id/item_team_wins"
             app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
@@ -86,7 +84,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:hint="losses"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/item_team_goals"
             app:layout_constraintStart_toEndOf="@+id/item_team_draws"
             app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
@@ -100,7 +97,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:hint="goals"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/item_team_goalsAgainst"
             app:layout_constraintStart_toEndOf="@+id/item_team_losses"
             app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
@@ -114,7 +110,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:hint="goals"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_team_goals"
             app:layout_constraintTop_toBottomOf="@id/item_team_points_mark"
@@ -198,6 +193,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_team_goals"
             app:layout_constraintTop_toTopOf="@+id/item_team_points_mark" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/item_team_squad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/item_team_points"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible"/>
 
     </android.support.constraint.ConstraintLayout>
 

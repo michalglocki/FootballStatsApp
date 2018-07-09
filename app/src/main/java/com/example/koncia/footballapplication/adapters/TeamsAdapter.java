@@ -7,14 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.koncia.footballapplication.R;
 import com.example.koncia.footballapplication.models.Team;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +18,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
+public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHolder>{
 
     private List<Team> teams = new ArrayList<>();
 
@@ -33,12 +29,12 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new TeamsAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_team, parent, false));
+    public TeamsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new TeamsViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_team, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TeamsViewHolder holder, int position) {
         holder.setup(teams.get(position));
     }
 
@@ -52,7 +48,7 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
         return teams;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class TeamsViewHolder extends RecyclerView.ViewHolder{
 
         @BindView((R.id.item_team_title))
         TextView title;
@@ -78,7 +74,7 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder>{
         @BindView(R.id.team_check_box)
         CheckBox favourite;
 
-        ViewHolder(View itemView) {
+        TeamsViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
